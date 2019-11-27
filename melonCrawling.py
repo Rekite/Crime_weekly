@@ -61,6 +61,9 @@ for i in range(0, 1):
 
         # 실명
         realnames = soup.find_all('span', {'class':'realname'})
+        if len(realnames) == 0:
+            people.append('')
+            rname.append('')
         # 상세정보
         infos = soup.find_all('dl', {'class':'atist_info clfix'})
 
@@ -143,6 +146,8 @@ for i in range(len(back)):
             activity_tipe.append(back[i][j+1])
 
 # if len > 1 join 사용
+print(name)
+print(rname)
 print(debut)
 print(birth)
 print(activity_tipe)
