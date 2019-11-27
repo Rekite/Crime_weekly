@@ -144,6 +144,24 @@ for i in range(len(back)):
             birth.append(back[i][j+1])
         if back[i][j] == '활동유형':
             activity_tipe.append(back[i][j+1])
+            
+#리스트로 합침
+for num in range(len(agent)):
+    if len(agent[num])>1:
+        agent[num]= [' '.join(agent[num])]
+
+for num in range(len(award)):
+    if len(award[num])>1:
+        award[num]= [' '.join(award[num])]
+msc=[]
+msc2=[]
+for i in range(len(music)):
+    if music[i]!='\n':
+        msc.append(music[i])
+    else:
+        msc2.append(msc)
+        msc=[]
+music=msc2
 
 # if len > 1 join 사용
 print(name)
