@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>범죄가중계</title>
+	<link rel="stylesheet" type="text/css" href="CS_css.css">
+</head>
+<!-- 헤더 고정 창 / iframe 지정 -->
+<body>
+	<!--검색창-->
+	<!--검색 결과를 하단의 iframe에서 보이게 한다.-->
+	<form action="search.php" method="get" target="ShowInfo">
+	<div>
+
+			<input type="text" name="name" placeholder="작곡가 또는 가수 명을 입력하세요" required>
+			<input type="submit" id="searchBt" value="검색">
+			 <!-- <button id=searchBt onclick="searchPeople('CrimePeople.html')">검색</button> -->
+		
+	</div>
+	<!--홈/검색 결과창-->
+	<iframe id="main_frame" name="ShowInfo" src="">
+		이 브라우저는 iframe을 지원하지 않습니다.
+	</iframe>
+
+	</form>
+
+
+	<script type="text/javascript" src="Crimejs.js"></script>
+
+</body>
+</html>
