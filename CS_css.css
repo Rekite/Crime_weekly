@@ -3,14 +3,26 @@ body {
 }
 
 
-div {
-	height: 40px;
+input.searchbox {
+	height: 20px;
 	width: 400px;
 	margin : 0 auto;
 	border: 2px solid #1b5ac2;
 	background: #ffffff;
 }
 
+select.selectbox{
+	height: 44px;
+	margin: 0 auto;
+	border: 2px solid #1b5ac2;
+	background: #ffffff;
+	font-size: 16px;
+}
+
+table{
+	border-color: #ffffff;
+	margin: 0 auto;
+}
 
 input {
 	font-size: 16px;
@@ -41,5 +53,10 @@ iframe {
 	width: 100vw;
 	height : 100vh;
 	border: 0;
+	margin : 0 auto;
+}
 
+#logo {
+	text-align:center;
+	margin : 0 auto;
 }

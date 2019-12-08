@@ -10,20 +10,32 @@
 	<!--검색창-->
 	<!--검색 결과를 하단의 iframe에서 보이게 한다.-->
 	<form action="search.php" method="get" target="ShowInfo">
-	<div>
-
-			<input type="text" name="name" placeholder="작곡가 또는 가수 명을 입력하세요" required>
-			<input type="submit" id="searchBt" value="검색">
+		<table>	<!--미관을 위해 table로 묶었을 뿐이고 기능에 변화 없어요-->
+			<tr>
+				<td>
+				<select class="selectbox" name="job" size="1">
+					<option value="singer" selected> 가수 </option>
+					<option value="composer"> 작곡가 </option>
+				</select>
+				</td>
+				<td>
+					<input type="text" name="name" class="searchbox" placeholder="작곡가 또는 가수 명을 입력하세요" required>
+				</td>
+				<td>
+					<input type="submit" id="searchBt" class="searchbox" value="검색">
+				</td>
+			</tr>
+		</table>
 			 <!-- <button id=searchBt onclick="searchPeople('CrimePeople.html')">검색</button> -->
-		
-	</div>
 	<!--홈/검색 결과창-->
-	<iframe id="main_frame" name="ShowInfo" src="">
+	<p align="middle">	<!--가운데 정렬을 위해 p로 묶었습니다-->
+	<iframe id="main_frame" name="ShowInfo" src="logo.html" width="800">
+		<!--기본 창:로고-->
 		이 브라우저는 iframe을 지원하지 않습니다.
 	</iframe>
+	</p>
 
 	</form>
-
 
 	<script type="text/javascript" src="Crimejs.js"></script>
 
