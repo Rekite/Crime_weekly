@@ -11,7 +11,6 @@ pic = []
 rname = []
 back = []
 
-
 # background contents
 debut = []
 birth = []
