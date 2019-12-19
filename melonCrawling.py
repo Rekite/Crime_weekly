@@ -32,11 +32,11 @@ def set_request(targetSite):
 # <Response [406] 출력
 # ㄱ: 0~1593
 # 검색조건 총 몇 건인지 확인 후 10으로 나눠서 확인 => 1 부분 수정
-for i in range(0, 100):
-    if i == 0:
-        targetSite = 'https://www.melon.com/artistplus/finder/listArtistFinderPaging.htm?startIndex=1&pageSize=10&idx=%25E3%2584%25B1&sex=&actType=&domestic=Y&tabSort=hit'
+for i in range(66, 68):
+    if i == 66:
+        targetSite = 'https://www.melon.com/artistplus/finder/listArtistFinderPaging.htm?startIndex=661&pageSize=10&idx=%25E3%2584%25B4&sex=&actType=&domestic=Y&genreCd=&actYear=&tabSort=hit'
     else:
-        targetSite = 'https://www.melon.com/artistplus/finder/listArtistFinderPaging.htm?startIndex={0}1&pageSize=10&idx=%25E3%2584%25B1&sex=&actType=&domestic=Y&tabSort=hit'.format(i)
+        targetSite = 'https://www.melon.com/artistplus/finder/listArtistFinderPaging.htm?startIndex={0}1&pageSize=10&idx=%25E3%2584%25B1&sex=&actType=&domestic=Y&genreCd=&actYear=&tabSort=hit'.format(i)
 
     soup = set_request(targetSite)
 
@@ -83,7 +83,7 @@ for i in range(0, 100):
             back.append(info.split())
 
         # 곡 수 받아오기
-        num = soup.find_all('span', {'class':'text'})
+        """num = soup.find_all('span', {'class':'text'})
         # 곡 수
         for n1 in num:
             if '발매' in n1.text:
@@ -95,17 +95,17 @@ for i in range(0, 100):
         if int(number)/50%2 ==0:
            number = int(number)//50
         else:
-            number = int(number) // 50 + 1
+            number = int(number) // 50 + 1"""
 
         # 곡명 받아오기
-        songs = soup.find_all('a', {'class': 'fc_gray'})
+        songs = soup.find_all('a', {'class': 'fc_gray'}, limit=3)
         for song in songs:
             music.append(song.text)
             people.append(song.text)
         # 음악 \n으로 구분
         music.append('\n')
         # 첫번째 페이지 이후 곡을 받아옴
-        if not number == 1:
+        """if not number == 1:
             for k in range(2, number+1):
                 page = (k-1)*5
                 targetSite = 'https://www.melon.com/artist/songPaging.htm?startIndex={0}1&pageSize=50&listType=A&orderBy=ISSUE_DATE&artistId={1}'.format(page,move)
@@ -113,7 +113,7 @@ for i in range(0, 100):
                 songs = soup.find_all('a', {'class': 'fc_gray'})
                 for song in songs:
                     music.append(song.text)
-                    people.append(song.text)
+                    people.append(song.text)"""
 
 # 정보에서 각 부분 추출
 for i in range(len(back)):
@@ -125,8 +125,10 @@ for i in range(len(back)):
     if '생일' not in back[i]:
         birth.append('')
     if '활동유형' not in back[i]:
+        check=False
         activity_tipe.append('')
     if '소속사' not in back[i]:
+        check=False
         agent.append('')
     if '수상이력' not in back[i]:
         check=False
@@ -168,24 +170,27 @@ for i in range(len(music)):
         msc2.append(', '.join(msc))
         msc=[]
 music=msc2
-            
+
+
+
+#print(music[0:3])
 # if len > 1 join 사용
-"""print(name)
-print(rname)
-print(debut)
-print(birth)
-print(activity_tipe)
-print(agent)
-print(award)
-print(music)"""
+"""print(len(name))
+print(len(rname))
+print(len(debut))
+print(len(birth))
+print(len(activity_tipe))
+print(len(agent))
+print(len(award))
+print(len(music))
+print(len(pic))"""
    # print(back[i])
 
 raw_data = []
-
-
+"""
 for i in range(len(name)):
-    m=[name[i], rname[i],debut[i],birth[i],activity_tipe[i], agent[i],award[i],music[i]]
+    m=[name[i], rname[i],pic[i],debut[i],birth[i],activity_tipe[i], agent[i],award[i],music[i]]
     raw_data.append(m)
 
-data=pd.DataFrame(raw_data)
-data.to_csv(path_or_buf=r"C:\Users\sk629\Crime_weekly\r1.csv", encoding='utf_8_sig')
+data=pd.DataFrame(raw_data)"""
+#data.to_csv(path_or_buf=r"C:\Users\sk629\Crime_weekly\r1.csv", encoding='utf_8_sig')
