@@ -182,6 +182,7 @@ print(music)"""
 
 raw_data = []
 
+
 for i in range(len(name)):
     m=[name[i], rname[i],debut[i],birth[i],activity_tipe[i], agent[i],award[i],music[i]]
     raw_data.append(m)
