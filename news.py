@@ -14,6 +14,7 @@ result={}
 
 #엑셀로 저장하기 위한 변수
 RESULT_PATH='C:/2019_2/crawling_result/'
+#현재시각으로 csv저장
 now= datetime.now()
 
 
@@ -53,6 +54,7 @@ def crawler(maxpage,query,sort,s_date,e_date):
     maxpage_t = (int(maxpage)-1)*10+1
     #11=2페이지,21=3페이지,31=4페이지
 
+    #while문 통해서 반복 크롤링함
     while page <= maxpage_t:
         url="https://search.naver.com/search.naver?where=news&query="+query+ "&sort="+sort+"&ds="+s_date+"&de="+e_date+"&nso=so%3Ar%2Cp%3Afrom"+s_from+"to"+e_to+"%2Ca%3A&start=" + str(page)
 
@@ -103,24 +105,34 @@ def crawler(maxpage,query,sort,s_date,e_date):
     # 새로 만들 파일이름 지정
     outputFileName = '%s-%s-%s  %s시 %s분 %s초.csv' % (now.year, now.month, now.day, now.hour, now.minute, now.second)
     df.to_csv(RESULT_PATH+outputFileName,encoding='utf-8-sig')
+    #dataframe을 csv로 저장
 
 
 def main():
     #info_main = input("="*50+"\n"+"입력 형식에 맞게 입력해주세요"+"\n"+"시작하시려면 Enter를 눌러주세요."+"\n"+"="*50)
 
 #    maxpage = input("최대 크롤링할 페이지 수 입력하세요: ")
-    maxpage = '100'
+    maxpage = '100' #최대 100페이지 크롤링
 
+    #범죄 키워드 리스트, 여기를 수정가능
+    crime = ['음주운전','탈세','성폭행','구속','마약','처벌','혐의']
+    #리스트를 문자열로 변환
+    res=(' '.join(crime))
+
+    #이부분 수정되어야함, 가수이름 문자열로 넘겨받음
     query=input("검색어 입력: ")
+    #검색키워드+문자열
+    query+res
 
  #   sort=input("뉴스 검색 방식 입력(관련도순0/최신수1/오래된순2): ")
-    sort='0'
+    sort='0' #관련도순으로 크롤링
 
     #s_date=input("시작날짜 입력(2019.01.04): ")
     s_date='2018.01.01'
 
 #    e_date=input("끝날짜 입력(2019.01.05): ")
     e_date='2019.11.26'
+    # 크롤러 실행
     crawler(maxpage,query,sort,s_date,e_date)
 
 main()
