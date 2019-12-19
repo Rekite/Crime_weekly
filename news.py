@@ -131,7 +131,7 @@ def main():
     s_date='2018.01.01'
 
 #    e_date=input("끝날짜 입력(2019.01.05): ")
-    e_date='2019.11.26'
+    e_date='2019.12.19'
     # 크롤러 실행
     crawler(maxpage,query,sort,s_date,e_date)
 
