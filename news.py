@@ -21,9 +21,9 @@ contents_text=[]
 result=[]
 
 #엑셀로 저장하기 위한 변수
-RESULT_PATH='C:/2019_2/crawling_result/'
+#RESULT_PATH='C:/2019_2/crawling_result/'
 #현재시각으로 csv저장
-now= datetime.now()
+#now= datetime.now()
 
 
 #날짜 정제화 함수
@@ -52,8 +52,9 @@ def contents_cleansing(contents):
     for_cleansing_contents = re.sub('trong class="hl">','',third_cleansing_contents).strip()
     fifth_cleansing_contents = re.sub('strong>','',for_cleansing_contents).strip()
 
-    six_cleansing_contents = re.sub( 'dd> dl>','',fifth_cleansing_contents).strip()
-    contents_text.append(six_cleansing_contents)
+    six_cleansing_contents = re.sub( 'dd>','',fifth_cleansing_contents).strip()
+    sev_cleansing_contents = re.sub('dl>','',six_cleansing_contents).strip()
+    contents_text.append(sev_cleansing_contents)
 
 
 #크롤러
@@ -166,12 +167,16 @@ def main():
     for j in range(len(date_text)):
         for i in range(len(date_text)):
             rdate.append(date_text[i])
+
         for i in range(len(date_text)):
             rtitle.append(title_text[i])
+
         for i in range(len(date_text)):
             rcontent.append(contents_text[i])
+
         for i in range(len(date_text)):
-            rlink.append(date_text[i])
+            rlink.append(link_text[i])
+
         for i in range(len(date_text)):
             result=[rdate[i],rtitle[i],rcontent[i],rlink[i]]
             result2.append(result)
