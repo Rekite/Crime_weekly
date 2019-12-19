@@ -32,7 +32,7 @@ def set_request(targetSite):
 # <Response [406] 출력
 # ㄱ: 0~1593
 # 검색조건 총 몇 건인지 확인 후 10으로 나눠서 확인 => 1 부분 수정
-for i in range(0, 1):
+for i in range(0, 100):
     if i == 0:
         targetSite = 'https://www.melon.com/artistplus/finder/listArtistFinderPaging.htm?startIndex=1&pageSize=10&idx=%25E3%2584%25B1&sex=&actType=&domestic=Y&tabSort=hit'
     else:
@@ -149,36 +149,42 @@ for i in range(len(back)):
 #리스트로 합침
 for num in range(len(agent)):
     if len(agent[num])>1:
-        agent[num]= [' '.join(agent[num])]
+        agent[num]= ' '.join(agent[num])
+    else:
+        agent[num]=' '.join(agent[num])
 
 for num in range(len(award)):
     if len(award[num])>1:
-        award[num]= [' '.join(award[num])]
+        award[num]= ' '.join(award[num])
+    else:
+        award[num]=' '.join(award[num])
+
 msc=[]
 msc2=[]
 for i in range(len(music)):
     if music[i]!='\n':
         msc.append(music[i])
     else:
-        msc2.append(msc)
+        msc2.append(', '.join(msc))
         msc=[]
 music=msc2
             
 # if len > 1 join 사용
-print(name)
+"""print(name)
 print(rname)
 print(debut)
 print(birth)
 print(activity_tipe)
 print(agent)
 print(award)
-print(music)
-print(" ".join(agent[0]))
+print(music)"""
    # print(back[i])
 
-"""raw_data = [{'이름': name},
-            {'사진': pic},
-            {'정보': back}]
-data=pd.DataFrame(raw_data)"""
-#data.to_csv(path_or_buf=r"C:\Users\semai\serv\m2.csv", encoding='utf_8_sig')
-#print(data)
+raw_data = []
+
+for i in range(len(name)):
+    m=[name[i], rname[i],debut[i],birth[i],activity_tipe[i], agent[i],award[i],music[i]]
+    raw_data.append(m)
+
+data=pd.DataFrame(raw_data)
+data.to_csv(path_or_buf=r"C:\Users\sk629\Crime_weekly\r1.csv", encoding='utf_8_sig')
